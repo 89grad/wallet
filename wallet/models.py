@@ -68,6 +68,7 @@ class BarcodeFormat():
     PDF417 = 'PKBarcodeFormatPDF417'
     QR = 'PKBarcodeFormatQR'
     AZTEC = 'PKBarcodeFormatAztec'
+    CODE128 = 'PKBarcodeFormatCode128'
 
 
 class TransitType():
@@ -233,7 +234,7 @@ class Barcode():
         Initiate Field
 
         :param message: Message or Payload for Barcdoe
-        :param format: pdf417/ qr/ aztec
+        :param format: pdf417 / qr/ aztec / code128
         :param encoding: Default utf-8
         :param alt_text: Optional Text displayed near the barcode
         """
@@ -243,6 +244,7 @@ class Barcode():
             'pdf417' : BarcodeFormat.PDF417,
             'qr' : BarcodeFormat.QR,
             'aztec' : BarcodeFormat.AZTEC,
+            'code128' : BarcodeFormat.CODE128,
         }.get(kwargs['format'], 'qr')
         self.message = kwargs['message']
         self.messageEncoding = kwargs.get('encoding', 'iso-8859-1')
@@ -278,7 +280,7 @@ class Location():
             except (ValueError, TypeError, KeyError):
                 setattr(self, name, 0.0)
         if 'distance' in kwargs:
-            self.distance = kwarg['distance']
+            self.distance = kwargs['distance']
         self.relevantText = kwargs.get('relevant_text', '')
 
     def json_dict(self):
