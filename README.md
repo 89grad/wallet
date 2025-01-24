@@ -39,7 +39,7 @@ This part from here needs to be updated:
     2. Generate the pass pem file:
 
        ```sh
-       openssl pkcs12 -in "Certificates.p12" -clcerts -nokeys -out certificate.pem
+       openssl pkcs12 -in "Certificates.p12" -clcerts -nokeys -out certificate.pem --legacy
        ```
     3. Generate the key pem file:<br/>**Note** *you must set a password for the key pem file or you'll get errors when attempt to generate the pkpass file.*
 
